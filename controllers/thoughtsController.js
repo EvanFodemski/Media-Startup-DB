@@ -25,7 +25,7 @@ module.exports = {
         }
     },
 
-    async createApplication(req, res) {
+    async createThought(req, res) {
         try {
           const thought = await thoughtRoutes.create(req.body);
           const user = await userRoutes.findOneAndUpdate(
