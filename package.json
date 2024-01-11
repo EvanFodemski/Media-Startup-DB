@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "run test"
+    "test": "run test",
+    "start": "node server.js"
   },
   "author": "Evan Fodemski",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
     "moment": "^2.30.1",
-    "mongoose": "^8.0.3"
+    "mongoose": "^7.0.2"
   }
 }

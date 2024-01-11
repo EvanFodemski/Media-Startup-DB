@@ -1,24 +1,24 @@
-const { mongoose } = require ('mongoose');
+const  mongoose  = require ('mongoose');
 const moment = require ('moment');
 
 const reactionSchema = new mongoose.Schema({
-    reactionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: mongoose.Types.ObjectId
-    },
-    reactionBody: {
-        type: String,
-        required:true,
-        maxlength: 280
-    },
-    username: {
-        type: String,
-        required: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+  reactionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: () => new mongoose.Types.ObjectId(),
+  },
+  reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+  },
+  username: {
+      type: String,
+      required: true,
+  },
+  createdAt: {
+      type: Date,
+      default: Date.now,
+  }
 });
 
 
@@ -56,8 +56,8 @@ thoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
   });
 
-const Thought = mongoose.model('Thought', thoughtSchema);
+const thoughtModel = mongoose.model('thoughtModel', thoughtSchema);
 
-module.exports = Thought;
+module.exports = thoughtModel;
 
 

@@ -1,11 +1,11 @@
-const { mongoose } = require ('mongoose');
+const { Schema , model } = require ('mongoose');
 
 var validateEmail = function(email) {
     var ret = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return ret.test(email)
 };
 
-const UsersSchema = new mongoose.Schema(
+const usersSchema = new Schema(
     {
     username: {
         type: String,
@@ -22,21 +22,21 @@ const UsersSchema = new mongoose.Schema(
     },
     thoughts: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "thoughtModel"
         }],
     friends: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "userModel"
+            type: Schema.Types.ObjectId,
+            ref: "User"
         }]
 
     });
 
-    UsersSchema.virtual('friendCount').get(function(){
+    usersSchema.virtual('friendCount').get(function(){
         return this.friends.length;
     });
 
-    const User = mongoose.model('User', userSchema);
+    const User = model('User', usersSchema);
 
     module.exports = User;
